@@ -17,7 +17,7 @@ import (
 func main() {
 	err := godotenv.Load()
 	if err != nil {
-		log.Printf("Error loading .env file: %v", err)
+		log.Printf("error loading .env file: %v", err)
 	}
 
 	_, cancel := context.WithCancel(context.Background())
@@ -34,7 +34,8 @@ func main() {
 
 	log.Printf("server listening at %v", lis.Addr())
 
-	if err := s.Serve(lis); err != nil {
+	err = s.Serve(lis)
+	if err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
 }
